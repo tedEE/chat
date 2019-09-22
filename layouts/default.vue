@@ -1,6 +1,6 @@
 <template>
   <v-app app dark>
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" mobile-break-point="650" app>
       <v-list subheader>
         <v-subheader>Список людей в комнате</v-subheader>
         <v-list-tile v-for="u in users" :key="u.id" @click.prevent>
@@ -26,7 +26,7 @@
 
     <v-content>
 
-      <div>
+      <div style="height: 100%">
         <nuxt/>
       </div>
 

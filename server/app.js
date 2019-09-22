@@ -15,6 +15,7 @@ io.on('connection', (socket)=>{
         socket.join(data.room)
         cb({userId: socket.id})
         socket.emit('newMassage', m('admin', `Добро пожаловать ${data.name}`))
+        socket.emit('newMassage', m('test', `Добро пожаловать`))
         socket.broadcast.to(data.room)
             .emit('newMassage', m('admin', `Пользователь ${data.name} зашел.`))
     })
@@ -22,7 +23,7 @@ io.on('connection', (socket)=>{
     socket.on('CreateMassage', (data)=>{
         setTimeout(()=>{
             socket.emit('newMassage', {
-                text : data.text + ' Server '
+                text : data.text
             })
         }, 500)
     })
