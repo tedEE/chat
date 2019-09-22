@@ -1,6 +1,6 @@
 # chat
 
-> My hunky-dory Nuxt.js project
+Чат с использованем nuxt, socket, express
 
 ## Build Setup
 
