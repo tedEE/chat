@@ -5,7 +5,7 @@
 <!--        <li v-for="m in messages" :key="m.text" >{{m.text}}</li>-->
 <!--      </ul>-->
       <message v-for="m in messages" :key="m.text"
-        :name="m.name" :text="m.text" owner
+        :name="m.name" :text="m.text" :owner = "m.id === user.id"
       >
       </message>
     </div>

@@ -9,7 +9,7 @@
           </v-list-tile-content>
 
           <v-list-tile-action>
-            <v-icon :color="u.id === 2 ? 'primary' : 'grey'">chat_bubble</v-icon>
+            <v-icon :color="u.id === user.id ? 'primary' : 'grey'">chat_bubble</v-icon>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
@@ -41,19 +41,17 @@
         data() {
             return {
                 drawer: true,
-                users: [
-                    {id: 1, name: "User1"},
-                    {id: 2, name: "User2"}
-                ]
             }
         },
         methods: {
             ...mapMutations(['clearData']),
             exit() {
-                this.$router.push('/?message=leftChat')
-                this.clearData()
+                this.$socket.emit('userLeft', this.user.id,()=>{
+                    this.$router.push('/?message=leftChat')
+                    this.clearData()
+                })
             }
         },
-        computed: mapState(["user"])
+        computed: mapState(["user", "users"])
     }
 </script>
