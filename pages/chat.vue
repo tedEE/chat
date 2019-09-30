@@ -1,6 +1,6 @@
 <template>
   <div class="c-wrap">
-    <div class="c-chat">
+    <div class="c-chat" ref="block">
 <!--      <ul>-->
 <!--        <li v-for="m in messages" :key="m.text" >{{m.text}}</li>-->
 <!--      </ul>-->
@@ -28,7 +28,14 @@
         },
         name: "chat",
         components : {Message, ChatForm},
-        computed : mapState(['user', 'messages'])
+        computed : mapState(['user', 'messages']),
+        watch : {
+            messages(){
+                setTimeout(()=>{
+                    this.$refs.block.scrollTop = this.$refs.block.scrollHeight
+                })
+            }
+        }
     }
 </script>
 
